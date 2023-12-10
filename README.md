@@ -15,7 +15,7 @@ Arturs Code-Repository für sein Praktikum
 1. Installiere eine IDE: https://www.jetbrains.com/
     * Integrierte Entwicklungsumgebung, die bei der Konstruktion der Java-Applikation ganzheitlich unterstützt
 1. Zu setzende Umgebungsvariablen:
-    * `HOME=%HOMEPATH%`
+    * `HOME=%USERPROFILE%`
     * `JAVA_HOME=C:\Program Files\Java\`
     * `MAVEN_HOME=C:\Programme\maven`
     * `M3_HOME=%MAVEN_HOME%`
