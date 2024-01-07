@@ -2,12 +2,12 @@ package com.quadient.internship.artur;
 
 import com.quadient.internship.artur.controller.Controller;
 import com.quadient.internship.artur.model.WordList;
-import com.quadient.internship.artur.view.ConsoleView;
+import com.quadient.internship.artur.view.AsciiImageConsoleView;
 
 public class Main {
     public static void main(final String[] args)
     {
-        final var controller = new Controller(new ConsoleView());
+        final var controller = new Controller(new AsciiImageConsoleView());
 
         do
         {

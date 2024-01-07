@@ -1,33 +1,21 @@
 package com.quadient.internship.artur.view;
 
+import com.quadient.internship.artur.TestBase;
 import com.quadient.internship.artur.model.GameState;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
-class ConsoleViewTest
+class ConsoleViewTest extends TestBase
 {
-    private final static InputStream ORIGINAL_SYSTEM_IN = System.in;
-
     private ConsoleView sut;
 
     @BeforeEach
     void beforeEach()
     {
-        System.setIn(new ByteArrayInputStream("a\r\n".getBytes(StandardCharsets.ISO_8859_1)));
+        setSystemIn(new String[]{"a"});
         sut = new ConsoleView();
-    }
-
-    @AfterAll
-    static void afterAll()
-    {
-        System.setIn(ORIGINAL_SYSTEM_IN);
     }
 
     @Test
@@ -48,37 +36,37 @@ class ConsoleViewTest
     @Test
     void getGuessedLetter()
     {
-        System.setIn(new ByteArrayInputStream("\u0000\u0005a\r\n".getBytes(StandardCharsets.ISO_8859_1)));
+        setSystemIn(new String[]{"\u0000", "\u0005", "a"});
         assertThat(sut.getGuessedLetter()).isEqualTo('a');
 
-        System.setIn(new ByteArrayInputStream("09z\r\n".getBytes(StandardCharsets.ISO_8859_1)));
+        setSystemIn(new String[]{"0", "9", "z"});
         assertThat(sut.getGuessedLetter()).isEqualTo('z');
 
-        System.setIn(new ByteArrayInputStream("?!A\r\n".getBytes(StandardCharsets.ISO_8859_1)));
+        setSystemIn(new String[]{"?", "!", "A"});
         assertThat(sut.getGuessedLetter()).isEqualTo('A');
 
-        System.setIn(new ByteArrayInputStream(".,#Z\r\n".getBytes(StandardCharsets.ISO_8859_1)));
+        setSystemIn(new String[]{".", ",", "#", "Z"});
         assertThat(sut.getGuessedLetter()).isEqualTo('Z');
 
-        System.setIn(new ByteArrayInputStream(";:ä\r\n".getBytes(StandardCharsets.ISO_8859_1)));
+        setSystemIn(new String[]{";", ":", "ä"});
         assertThat(sut.getGuessedLetter()).isEqualTo('ä');
 
-        System.setIn(new ByteArrayInputStream(";:Ä\r\n".getBytes(StandardCharsets.ISO_8859_1)));
+        setSystemIn(new String[]{";", ":", "Ä"});
         assertThat(sut.getGuessedLetter()).isEqualTo('Ä');
 
-        System.setIn(new ByteArrayInputStream(";:ö\r\n".getBytes(StandardCharsets.ISO_8859_1)));
+        setSystemIn(new String[]{";", ":", "ö"});
         assertThat(sut.getGuessedLetter()).isEqualTo('ö');
 
-        System.setIn(new ByteArrayInputStream(";:Ö\r\n".getBytes(StandardCharsets.ISO_8859_1)));
+        setSystemIn(new String[]{";", ":", "Ö"});
         assertThat(sut.getGuessedLetter()).isEqualTo('Ö');
 
-        System.setIn(new ByteArrayInputStream(";:ü\r\n".getBytes(StandardCharsets.ISO_8859_1)));
+        setSystemIn(new String[]{";", ":", "ü"});
         assertThat(sut.getGuessedLetter()).isEqualTo('ü');
 
-        System.setIn(new ByteArrayInputStream(";:Ü\r\n".getBytes(StandardCharsets.ISO_8859_1)));
+        setSystemIn(new String[]{";", ":", "Ü"});
         assertThat(sut.getGuessedLetter()).isEqualTo('Ü');
 
-        System.setIn(new ByteArrayInputStream(";:ß\r\n".getBytes(StandardCharsets.ISO_8859_1)));
+        setSystemIn(new String[]{";", ":", "ß"});
         assertThat(sut.getGuessedLetter()).isEqualTo('ß');
     }
 
@@ -97,16 +85,16 @@ class ConsoleViewTest
     @Test
     void askRestart()
     {
-        System.setIn(new ByteArrayInputStream("abj\r\n".getBytes(StandardCharsets.ISO_8859_1)));
+        setSystemIn(new String[]{"a", "b", "j"});
         assertThat(sut.askRestart()).isTrue();
 
-        System.setIn(new ByteArrayInputStream("yzJ\r\n".getBytes(StandardCharsets.ISO_8859_1)));
+        setSystemIn(new String[]{"y", "z", "J"});
         assertThat(sut.askRestart()).isTrue();
 
-        System.setIn(new ByteArrayInputStream("09n\r\n".getBytes(StandardCharsets.ISO_8859_1)));
+        setSystemIn(new String[]{"0", "9", "n"});
         assertThat(sut.askRestart()).isFalse();
 
-        System.setIn(new ByteArrayInputStream(",.N\r\n".getBytes(StandardCharsets.ISO_8859_1)));
+        setSystemIn(new String[]{",", ".", "N"});
         assertThat(sut.askRestart()).isFalse();
     }
 }

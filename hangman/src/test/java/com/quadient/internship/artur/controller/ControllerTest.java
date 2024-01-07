@@ -1,20 +1,15 @@
 package com.quadient.internship.artur.controller;
 
+import com.quadient.internship.artur.TestBase;
 import com.quadient.internship.artur.model.GameState;
-import com.quadient.internship.artur.view.ConsoleView;
-import org.junit.jupiter.api.AfterAll;
+import com.quadient.internship.artur.view.AsciiImageConsoleView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
-class ControllerTest
+class ControllerTest extends TestBase
 {
-    private final static InputStream ORIGINAL_SYSTEM_IN = System.in;
-
     private Controller sut;
 
     private Boolean gameWon;
@@ -22,9 +17,9 @@ class ControllerTest
     @BeforeEach
     void beforeEach()
     {
-        System.setIn(new ByteArrayInputStream("a\r\n".getBytes()));
+        setSystemIn(new String[]{"a"});
         gameWon = null;
-        sut = new Controller(new ConsoleView()
+        sut = new Controller(new AsciiImageConsoleView()
         {
             @Override
             public void displayGameLost(final GameState state)
@@ -42,16 +37,10 @@ class ControllerTest
         });
     }
 
-    @AfterAll
-    static void afterAll()
-    {
-        System.setIn(ORIGINAL_SYSTEM_IN);
-    }
-
     @Test
     void playAndWinGame()
     {
-        System.setIn(new ByteArrayInputStream("XaYbcd\r\n".getBytes()));
+        setSystemIn(new String[]{"X", "a", "Y", "b", "c", "d"});
 
         sut.initGame("abcABCD");
         sut.startGame();
@@ -62,7 +51,7 @@ class ControllerTest
     @Test
     void playAndLoseGame()
     {
-        System.setIn(new ByteArrayInputStream("XaYbZLMNOPQRSTUVWn\r\n".getBytes()));
+        setSystemIn(new String[]{"X", "a", "Y", "b", "Z", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "n"});
 
         sut.initGame("abcABCD");
         sut.startGame();
@@ -73,16 +62,16 @@ class ControllerTest
     @Test
     void isRestarted()
     {
-        System.setIn(new ByteArrayInputStream("abcdeFGHj\r\n".getBytes()));
+        setSystemIn(new String[]{"a", "b", "c", "d", "e", "F", "G", "H", "j"});
         assertThat(sut.isRestarted()).isTrue();
 
-        System.setIn(new ByteArrayInputStream("abcdeFGHn\r\n".getBytes()));
+        setSystemIn(new String[]{"a", "b", "c", "d", "e", "F", "G", "H", "n"});
         assertThat(sut.isRestarted()).isFalse();
 
-        System.setIn(new ByteArrayInputStream("abcdeFGHJ\r\n".getBytes()));
+        setSystemIn(new String[]{"a", "b", "c", "d", "e", "F", "G", "H", "J"});
         assertThat(sut.isRestarted()).isTrue();
 
-        System.setIn(new ByteArrayInputStream("abcdeFGHN\r\n".getBytes()));
+        setSystemIn(new String[]{"a", "b", "c", "d", "e", "F", "G", "H", "N"});
         assertThat(sut.isRestarted()).isFalse();
     }
 }

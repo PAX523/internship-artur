@@ -2,7 +2,9 @@ package com.quadient.internship.artur.view;
 
 import com.quadient.internship.artur.model.GameState;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,15 +47,17 @@ public class ConsoleView implements View
 
     private char readLetter()
     {
-        try
+        try (final ByteArrayOutputStream baos = new ByteArrayOutputStream())
         {
-            char letter;
-            do
+            int letter = System.in.read();
+            while (letter != -1 && letter != 10 && letter != 13)
             {
-                letter = (char) System.in.read();
-            } while (letter < 32);
+                baos.write((byte) (letter & 0xFF));
+                letter = System.in.read();
+            }
 
-            return letter;
+            final var result = baos.toString(StandardCharsets.UTF_8);
+            return !result.isEmpty() ? result.charAt(0) : 0;
         }
         catch (final IOException e)
         {

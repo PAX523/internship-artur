@@ -31,6 +31,8 @@ public class Controller
             else state.addIncorrectGuessedLetter(letter);
         }
 
+        view.refresh(state);
+
         if (state.isWordGuessed())
             view.displayGameWon(state);
         else if (state.isMaxiumGuessesExceeded())
