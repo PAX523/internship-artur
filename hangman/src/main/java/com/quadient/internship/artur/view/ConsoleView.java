@@ -47,10 +47,10 @@ public class ConsoleView implements View
 
     private char readLetter()
     {
-        try (final ByteArrayOutputStream baos = new ByteArrayOutputStream())
+        try (final var baos = new ByteArrayOutputStream())
         {
-            int letter = System.in.read();
-            while (letter != -1 && letter != 10 && letter != 13)
+            var letter = System.in.read();
+            while (letter != -1 && letter != '\r' && letter != '\n')
             {
                 baos.write((byte) (letter & 0xFF));
                 letter = System.in.read();
