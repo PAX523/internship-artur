@@ -9,6 +9,7 @@
   <packaging>pom</packaging>
 
   <url>https://github.com/PAX523/internship-artur</url>
+  <description>Das Praxisprojekt</description>
 
   <modules>
     <module>hangman</module>
