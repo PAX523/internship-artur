@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<homeWorks>
+    <course name="Mathematik">
+        <due>2024-01-23</due>
+        <task>Übungsaufgaben im Buch auf S. 23: 1, 2, 4, 5</task>
+    </course>
+    <course name="Deutsch">
+        <due>2024-01-24</due>
+        <task>Diktat aus Unterricht üben</task>
+    </course>
+    <course name="Geschichte">
+        <!-- Dies ist nur
+             ein Kommentar -->
+        <due>2024-01-24</due>
+        <task>Verfassungen vergleichen</task>
+    </course>
+</homeWorks>
