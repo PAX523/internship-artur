@@ -13,6 +13,7 @@
 
   <modules>
     <module>hangman</module>
+    <module>adventure-warrior</module>
   </modules>
 
   <properties>
