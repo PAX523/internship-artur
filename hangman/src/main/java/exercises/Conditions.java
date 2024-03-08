@@ -41,7 +41,7 @@ public class Conditions {
 
         int high = readNumber();
         switch (high) {
-            
+
             case 160:
                 System.out.println("Du bist so groß wie Artur!");
                 break;
@@ -56,6 +56,13 @@ public class Conditions {
                 }
 
                 break;
+        }
+
+        String bruder = "Maro";
+        if (bruder.equalsIgnoreCase("maro")) {
+            System.out.println("Mein Bruder ist jetzt Tabea!");
+        } else {
+            System.out.println("Maro ist immer noch mein Bruder!");
         }
 
     }
