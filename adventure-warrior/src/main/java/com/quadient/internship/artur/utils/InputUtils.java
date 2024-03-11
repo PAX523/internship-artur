@@ -18,4 +18,8 @@ public class InputUtils {
             throw new RuntimeException(e);
         }
     }
+
+    public static int readIntegerInput() {
+        return Integer.parseInt(readInput());
+    }
 }
