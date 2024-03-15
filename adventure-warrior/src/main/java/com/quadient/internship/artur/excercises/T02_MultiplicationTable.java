@@ -1,7 +1,18 @@
 package com.quadient.internship.artur.excercises;
 
+
+import com.quadient.internship.artur.utils.InputUtils;
+
 public class T02_MultiplicationTable {
     public static void main(final String[] args) {
+        System.out.println("Nenne mir eine Zahl ich gehe dan ihre Reihe durch:");
+        int eingabe = InputUtils.readIntegerInput();
+        int multiplikator = 1;
+        while (multiplikator <= 10) {
+            System.out.println(eingabe + " x " + multiplikator + " = " + (eingabe * multiplikator));
+            multiplikator++;
+        }
+
         /* Eine Zahl von der Konsole einlesen und die Multiplikationstabelle bis 10 für diese Zahl ausgeben. Dafür ist eine
         geeignete Schleife zu verwenden, z. B.:
 
