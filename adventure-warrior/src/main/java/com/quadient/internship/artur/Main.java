@@ -4,14 +4,34 @@ import com.quadient.internship.artur.utils.InputUtils;
 
 public class Main {
     private static String name;
+    private static int lebenspunkte;
+    private static int magiePunkte;
 
     public static void main(String[] args) {
         System.out.println("Wie lautet euer Name? ");
+        lebenspunkte = 100;
+        magiePunkte = 200;
         name = InputUtils.readInput();
         if (name.equalsIgnoreCase("Artur")) {
             spezialName();
         } else {
             normalerName();
+        }
+    }
+
+    private static void leben(int lebensenergie) {
+        lebenspunkte = lebenspunkte + lebensenergie;
+        if (lebensenergie > 0) {
+            System.out.println("Du hast " + lebensenergie + " Lebenspunkte dazu gewonnen! Du hast jetzt " + lebenspunkte + " Lebenspunkte!");
+        } else if (lebensenergie < 0) {
+            System.out.println("Du hast " + (-lebensenergie) + " Lebenspunkte verloren! Du hast jetzt " + lebenspunkte + " Lebenspunkte!");
+        } else {
+            System.out.println("Du hast KEINE Lebenspunkte verloren! Du hast immer noch " + lebenspunkte + " Lebenspunkte!");
+        }
+
+        if (lebenspunkte <= 0) {
+            System.out.println("DU hast kein Leben mehr!DU BIST TOT " + name);
+            System.exit(0);
         }
     }
 
@@ -65,6 +85,7 @@ public class Main {
             weiterMachen();
             weiter = InputUtils.readInput();
         }
+        leben(-10);
         if (name.equalsIgnoreCase("Artur")) {
             besiegt();
         } else {
@@ -118,7 +139,7 @@ public class Main {
     }
 
     private static void kreuzung() {
-        System.out.println(name + " du stehst an einer Weg gablung.");
+        System.out.println(name + " du stehst an einer Weggabelung.");
         System.out.println("""
                 Willst du nach Links(L) oder
                 Rechts(R)?
