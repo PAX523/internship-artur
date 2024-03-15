@@ -1,6 +1,6 @@
 package com.quadient.internship.artur.excercises;
 
-public class T01_MultiplicationTable {
+public class T02_MultiplicationTable {
     public static void main(final String[] args) {
         /* Eine Zahl von der Konsole einlesen und die Multiplikationstabelle bis 10 für diese Zahl ausgeben. Dafür ist eine
         geeignete Schleife zu verwenden, z. B.:
