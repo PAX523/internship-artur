@@ -19,6 +19,22 @@ public class Main {
         }
     }
 
+    private static void magie(int magieLeben) {
+        magiePunkte = magiePunkte + magieLeben;
+        if (magieLeben > 0) {
+            System.out.println("Du hast " + magieLeben + " Lebenspunkte dazu gewonnen! Du hast jetzt " + magiePunkte + " Lebenspunkte!");
+        } else if (magieLeben < 0) {
+            System.out.println("Du hast " + (-magieLeben) + " Lebenspunkte verloren! Du hast jetzt " + magiePunkte + " Lebenspunkte!");
+        } else {
+            System.out.println("Du hast KEINE Magiepunkte verloren! Du hast immer noch " + magiePunkte + " Lebenspunkte!");
+        }
+
+        if (magiePunkte <= 0) {
+            System.out.println("DU hast kein Leben mehr!DU BIST TOT " + name);
+            System.exit(0);
+        }
+    }
+
     private static void leben(int lebensenergie) {
         lebenspunkte = lebenspunkte + lebensenergie;
         if (lebensenergie > 0) {
@@ -86,6 +102,7 @@ public class Main {
             weiter = InputUtils.readInput();
         }
         leben(-10);
+        magie(-20);
         if (name.equalsIgnoreCase("Artur")) {
             besiegt();
         } else {
