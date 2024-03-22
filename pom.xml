@@ -14,6 +14,7 @@
   <modules>
     <module>hangman</module>
     <module>adventure-warrior</module>
+    <module>guessing-number</module>
   </modules>
 
   <properties>
