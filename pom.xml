@@ -15,6 +15,7 @@
     <module>hangman</module>
     <module>adventure-warrior</module>
     <module>guessing-number</module>
+    <module>monster-planet</module>
   </modules>
 
   <properties>

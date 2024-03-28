@@ -1,0 +1,23 @@
+
+
+
+Monster haben folgende Eigenschaften:
+
+ - Name
+ - Köpergröße (in Zentimeter)
+ - Kraft (Initialwert: 5000)
+ - Punktzahl
+
+Monster können:
+
+ - essen
+ - kämpfen
+ - Geräusch machen
+
+Wenn ein Monster isst, erhöht sich seine Kraft
+
+Wenn ein Monster kämpft, verringert sich seine Kraft in Abhängigkeit seiner Größe: Größe mal 3
+
+Wenn ein Monster kämpft, erhöht sich seine Punktzahl in Abhängigkeit seiner Größe: Größe mal 3
+ 
+Konkrete Monstertypen: Zombie, Oger
