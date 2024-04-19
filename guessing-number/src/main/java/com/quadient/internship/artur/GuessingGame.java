@@ -4,13 +4,13 @@ import com.quadient.internship.artur.utils.InputUtils;
 import com.quadient.internship.artur.utils.NumberUtils;
 
 public class GuessingGame {
-    public int zufallsZahl;
+    private int zufallsZahl;
 
-    public int versuche = 10;
+    private int versuche = 10;
 
-    public void vorbei2() {
+    private void vorbei2() {
         if (versuche <= 0) {
-            System.out.println("Du hast in 10 versuchen es nicht geschafft die Zahl " + zufallsZahl + (" herausgefunden!"));
+            System.out.println("Du hast in 10 versuchen es nicht geschafft die Zahl " + zufallsZahl + (" herauszufinden!"));
             vorbei();
         }
 
@@ -20,10 +20,10 @@ public class GuessingGame {
         zufallsZahl = NumberUtils.random(1, 101);
     }
 
-    public void benutzereingabe() {
+    public int benutzereingabe() {
         int x = InputUtils.readIntegerInput();
-        ueberpruefeBenutzereingabe(x);
         versuche--;
+        return x;
     }
 
     public void ueberpruefeBenutzereingabe(final int eingabe) {
@@ -39,7 +39,7 @@ public class GuessingGame {
         }
     }
 
-    public void vorbei() {
+    private void vorbei() {
         System.exit(0);
     }
 
