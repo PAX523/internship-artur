@@ -16,6 +16,7 @@
     <module>adventure-warrior</module>
     <module>guessing-number</module>
     <module>monster-planet</module>
+    <module>swing</module>
   </modules>
 
   <properties>
