@@ -1,11 +1,11 @@
 
 Monster haben folgende Eigenschaften:
 
- - Name
- - Alter
- - Köpergröße (in Zentimeter)
- - Kraft (Initialwert: 5000)
- - Punktzahl
+ - Name✓
+ - Alter✓
+ - Körpergröße (in Zentimeter)✓
+ - Kraft (Initialwert: 5000)✓
+ - Punktzahl✓
 
 Monster können:
 
