@@ -2,21 +2,22 @@ package com.quadient.internship.artur.monster;
 
 public class Monster {
 
-    private String name;
-    private int alter;
-    private int koerpergroese;
-    private int punktzahl;
-    private int kraft = 5000;
+
+    protected String name;
+    protected int alter;
+    protected int koerpergroese;
+    protected int punktzahl;
+    protected int kraft = 5000;
 
     public void setKraft(int kraftEingabe) {
         kraft = kraftEingabe;
     }
 
-    public void setFellfarbe(String nameEingabe) {
+    public void setName(String nameEingabe) {
         name = nameEingabe;
     }
 
-    public void setAugenfarbe(int alterEingabe) {
+    public void setAlter(int alterEingabe) {
         alter = alterEingabe;
     }
 
@@ -24,17 +25,20 @@ public class Monster {
         koerpergroese = groeseEingabe;
     }
 
-    public void setGewicht(int punktzahlEingabe) {
+    public void setPunktzahlt(int punktzahlEingabe) {
         punktzahl = punktzahlEingabe;
     }
 
     public void essen() {
 
         System.out.println("MHhhh... LECKER!");
+        kraft += 100;
     }
 
     public void kaempfen() {
         System.out.println("Ich werde dich TÖTEN!");
+        kraft = kraft - koerpergroese * 3;
+        punktzahl = punktzahl + koerpergroese * 3;
     }
 
     public void gerauscheMachen() {

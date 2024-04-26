@@ -9,8 +9,8 @@ Monster haben folgende Eigenschaften:
 
 Monster können:
 
- - essen
- - kämpfen
+ - essen✓
+ - kämpfen✓
  - Geräusch machen
  - schlafen
 
